@@ -1,4 +1,4 @@
-import { getSession } from '../session';
+import { getSession } from '@/app/session';
 
 const DashboardPage = async () => {
   await getSession();
