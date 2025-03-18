@@ -1,5 +1,7 @@
+import { redirect } from 'next/navigation';
+
 import { Logo } from '@/components/shared/logo';
-import { Button } from '@/components/ui/button';
+import { SubmitButton } from '@/components/shared/submit-button';
 import {
   Card,
   CardContent,
@@ -9,9 +11,13 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { signIn } from '../auth';
+import { auth, signIn } from '../auth';
 
-const LoginPage = () => {
+const LoginPage = async () => {
+  const session = await auth();
+
+  if (session?.user) redirect('/dashboard');
+
   return (
     <main className='flex min-h-screen items-center justify-center p-5'>
       <Card className='w-full max-w-sm'>
@@ -37,7 +43,7 @@ const LoginPage = () => {
               <Input type='email' id='email' name='email' />
             </div>
 
-            <Button className='w-full'>Enviar</Button>
+            <SubmitButton />
           </form>
         </CardContent>
       </Card>
