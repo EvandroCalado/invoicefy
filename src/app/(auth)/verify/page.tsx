@@ -13,7 +13,7 @@ const VerifyPage = () => {
   return (
     <div className='flex min-h-screen items-center justify-center p-5'>
       <Card className='w-full max-w-sm'>
-        <Logo />
+        <Logo className='text-center' />
 
         <div className='bg-primary/10 border-primary mx-auto flex size-20 items-center justify-center rounded-full border-4'>
           <Mail className='text-primary size-10' />

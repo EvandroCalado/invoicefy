@@ -1,10 +1,22 @@
 import Link from 'next/link';
 
-export const Logo = () => {
+import { cn } from '@/lib/utils';
+
+type LogoProps = {
+  className?: string;
+};
+
+export const Logo = ({ className }: LogoProps) => {
   return (
     <Link href='/'>
-      <h1 className='text-primary text-center text-3xl font-normal tracking-tight'>
-        Invoice<span className='font-bold'>fy</span>
+      <h1
+        className={cn(
+          'text-primary text-3xl font-semibold tracking-tight',
+          className,
+        )}
+      >
+        <span> Invoice</span>
+        <span className='font-bold'>Fy</span>
       </h1>
     </Link>
   );

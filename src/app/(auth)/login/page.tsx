@@ -23,7 +23,7 @@ const LoginPage = async () => {
       <Card className='w-full max-w-sm'>
         <CardHeader>
           <CardTitle className='mb-4'>
-            <Logo />
+            <Logo className='text-center' />
           </CardTitle>
           <CardDescription>Entre com com email abaixo</CardDescription>
         </CardHeader>
