@@ -4,9 +4,10 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { ChevronLeft, LayoutDashboard, LogOut, Wallet } from 'lucide-react';
+import { ChevronLeft, LogOut } from 'lucide-react';
 import { signOut, useSession } from 'next-auth/react';
 
+import { links } from '@/lib/links';
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarImage } from '../ui/avatar';
 import { Button } from '../ui/button';
@@ -18,21 +19,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '../ui/tooltip';
-
-const links = [
-  {
-    id: 1,
-    title: 'Painel',
-    href: '/dashboard',
-    icon: <LayoutDashboard />,
-  },
-  {
-    id: 2,
-    title: 'Faturas',
-    href: '/invoices',
-    icon: <Wallet />,
-  },
-];
 
 export const SideMenu = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(true);
