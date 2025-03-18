@@ -37,7 +37,7 @@ export const SideMenu = () => {
     >
       <Button
         size='icon'
-        className='bg-foreground absolute top-5 -right-4 rounded-full hover:bg-zinc-800'
+        className='bg-foreground hover:bg-primary absolute top-5 -right-4 rounded-full'
         onClick={() => setIsOpenMenu(!isOpenMenu)}
       >
         <ChevronLeft
@@ -47,12 +47,12 @@ export const SideMenu = () => {
         />
       </Button>
 
-      <h1 className='text-muted mb-8 text-center text-2xl font-semibold tracking-tight'>
+      <h1 className='text-primary mb-8 text-center text-2xl font-semibold tracking-tight'>
         <span className={cn({ hidden: !isOpenMenu })}>Invoice</span>
-        <span className='text-primary font-bold'>Fy</span>
+        <span className='font-bold'>Fy</span>
       </h1>
 
-      <div className='flex h-full flex-1 shrink flex-col justify-between'>
+      <div className='flex h-full flex-1 flex-col justify-between'>
         <nav className='space-y-2'>
           {links.map((link) => (
             <TooltipProvider key={link.id}>
@@ -60,12 +60,9 @@ export const SideMenu = () => {
                 <TooltipTrigger asChild>
                   <Button
                     asChild
-                    className={cn(
-                      'bg-foreground hover:bg-primary w-full justify-start',
-                      {
-                        'bg-primary': pathname === link.href,
-                      },
-                    )}
+                    className={cn('bg-foreground w-full justify-start', {
+                      'bg-primary': pathname === link.href,
+                    })}
                   >
                     <Link href={link.href}>
                       {link.icon}{' '}
@@ -95,7 +92,7 @@ export const SideMenu = () => {
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
-                className='justify-start bg-zinc-800'
+                className='bg-muted-foreground/20 justify-start'
                 onClick={() => signOut()}
               >
                 <LogOut />{' '}
@@ -119,7 +116,7 @@ export const SideMenu = () => {
         </TooltipProvider>
       </div>
 
-      <Separator className='my-8 bg-zinc-800' />
+      <Separator className='bg-muted-foreground/20 my-8' />
 
       <TooltipProvider>
         <Tooltip>
