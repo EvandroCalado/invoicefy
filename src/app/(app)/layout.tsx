@@ -1,3 +1,4 @@
+import { Header } from '@/components/shared/header';
 import { SideMenu } from '@/components/shared/side-menu';
 
 const AppLayout = ({
@@ -6,10 +7,13 @@ const AppLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <main className='grid min-h-screen md:grid-cols-2'>
+    <main className='flex h-screen'>
       <SideMenu />
 
-      <div className='w-full'>{children}</div>
+      <div className='w-full'>
+        <Header />
+        {children}
+      </div>
     </main>
   );
 };
