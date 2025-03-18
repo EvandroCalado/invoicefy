@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Geist } from 'next/font/google';
 
+import { SessionProvider } from 'next-auth/react';
+
 import './globals.css';
 
 const geistSans = Geist({
@@ -19,9 +21,11 @@ const RootLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <html lang='pt-BR'>
-      <body className={`${geistSans.variable} antialiased`}>{children}</body>
-    </html>
+    <SessionProvider>
+      <html lang='pt-BR'>
+        <body className={`${geistSans.variable} antialiased`}>{children}</body>
+      </html>
+    </SessionProvider>
   );
 };
 
