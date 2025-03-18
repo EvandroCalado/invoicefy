@@ -1,5 +1,8 @@
+import { redirect } from 'next/navigation';
+
 import { AlertCircle, Mail } from 'lucide-react';
 
+import { auth } from '@/app/auth';
 import { Logo } from '@/components/shared/logo';
 import {
   Card,
@@ -9,7 +12,11 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 
-const VerifyPage = () => {
+const VerifyPage = async () => {
+  const session = await auth();
+
+  if (session?.user) redirect('/dashboard');
+
   return (
     <div className='flex min-h-screen items-center justify-center p-5'>
       <Card className='w-full max-w-sm'>
