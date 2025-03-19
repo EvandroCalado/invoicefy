@@ -5,7 +5,11 @@ import { useFormStatus } from 'react-dom';
 
 import { Button } from '../ui/button';
 
-export const SubmitButton = () => {
+type SubmitButtonProps = {
+  children: React.ReactNode;
+};
+
+export const SubmitButton = ({ children }: SubmitButtonProps) => {
   const { pending } = useFormStatus();
 
   return (
@@ -13,11 +17,11 @@ export const SubmitButton = () => {
       {pending ? (
         <Button className='w-full' disabled={pending}>
           <Loader2 className='size-4 animate-spin' />
-          <span>Enviando</span>
+          <span>Carregando</span>
         </Button>
       ) : (
         <Button type='submit' className='w-full' disabled={pending}>
-          <span>Enviar</span>
+          <span>{children}</span>
         </Button>
       )}
     </>
