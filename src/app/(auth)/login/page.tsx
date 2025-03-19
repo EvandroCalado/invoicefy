@@ -43,7 +43,7 @@ const LoginPage = async () => {
               <Input type='email' id='email' name='email' />
             </div>
 
-            <SubmitButton />
+            <SubmitButton>Entrar</SubmitButton>
           </form>
         </CardContent>
       </Card>
