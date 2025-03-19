@@ -4,8 +4,8 @@ import { redirect } from 'next/navigation';
 
 import { parseWithZod } from '@conform-to/zod';
 
-import { prisma } from '@/app/db';
-import { getSession } from '@/app/session';
+import { prisma } from '@/lib/db';
+import { getSession } from '@/lib/get-session';
 import { onboardingSchema } from '@/schemas/onboarding-schema';
 
 export const onboardingAction = async (
