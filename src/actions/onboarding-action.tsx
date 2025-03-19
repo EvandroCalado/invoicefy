@@ -1,0 +1,37 @@
+'use server';
+
+import { redirect } from 'next/navigation';
+
+import { parseWithZod } from '@conform-to/zod';
+
+import { prisma } from '@/app/db';
+import { getSession } from '@/app/session';
+import { onboardingSchema } from '@/schemas/onboarding-schema';
+
+export const onboardingAction = async (
+  prevState: unknown,
+  formData: FormData,
+) => {
+  const session = await getSession();
+
+  const submission = parseWithZod(formData, {
+    schema: onboardingSchema,
+  });
+
+  if (submission.status !== 'success') {
+    return submission.reply();
+  }
+
+  const user = await prisma.user.update({
+    where: {
+      id: session.user?.id,
+    },
+    data: {
+      firstName: submission.value.firstName,
+      lastName: submission.value.lastName,
+      address: submission.value.address,
+    },
+  });
+
+  redirect('/dashboard');
+};
