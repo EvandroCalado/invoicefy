@@ -19,6 +19,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       from: process.env.EMAIL_FROM,
     }),
   ],
+  callbacks: {
+    session: async ({ session }) => {
+      return session;
+    },
+  },
   pages: {
     verifyRequest: '/verify',
   },
