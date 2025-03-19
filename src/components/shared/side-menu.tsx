@@ -128,8 +128,9 @@ export const SideMenu = () => {
                     src={session?.user?.image ?? undefined}
                     className='m-0'
                   />
-                  <AvatarFallback className='bg-primary text-xl uppercase'>
-                    {session?.user?.email?.charAt(0)}
+                  <AvatarFallback className='bg-muted-foreground font-semibold uppercase'>
+                    {session?.user?.firstName?.charAt(0)}
+                    {session?.user?.lastName?.charAt(0)}
                   </AvatarFallback>
                 </Avatar>
               ) : (
@@ -138,14 +139,14 @@ export const SideMenu = () => {
               {session?.user ? (
                 <span
                   className={cn(
-                    'line-clamp-1 text-[10px] font-semibold tracking-tighter text-zinc-500 transition-all duration-300',
+                    'text-muted-foreground line-clamp-1 font-semibold tracking-tighter transition-all duration-300',
                     { hidden: !isOpenMenu },
                   )}
                 >
-                  {session?.user?.email}
+                  {session?.user?.firstName} {session?.user?.lastName}
                 </span>
               ) : (
-                <Skeleton className='h-3 w-32' />
+                <Skeleton className='h-3 w-28' />
               )}
             </Button>
           </TooltipTrigger>

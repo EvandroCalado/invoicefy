@@ -8,7 +8,7 @@ import { signOut, useSession } from 'next-auth/react';
 
 import { links } from '@/lib/links';
 import { cn } from '@/lib/utils';
-import { Avatar, AvatarImage } from '../ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Button } from '../ui/button';
 import { Separator } from '../ui/separator';
 import {
@@ -72,26 +72,30 @@ export const MobileMenu = () => {
           <Separator className='bg-muted-foreground/20 my-8' />
 
           <Button className='justify-start bg-transparent p-0 transition-all duration-300 hover:bg-transparent'>
-            <Avatar>
-              {session?.user ? (
+            {session?.user ? (
+              <Avatar>
                 <AvatarImage
-                  src={session?.user?.image ?? '/avatar.png'}
+                  src={session?.user?.image ?? undefined}
                   className='m-0'
                 />
-              ) : (
-                <Skeleton className='size-8 rounded-full' />
-              )}
-            </Avatar>
+                <AvatarFallback className='bg-muted-foreground font-semibold uppercase'>
+                  {session?.user?.firstName?.charAt(0)}
+                  {session?.user?.lastName?.charAt(0)}
+                </AvatarFallback>
+              </Avatar>
+            ) : (
+              <Skeleton className='size-8 rounded-full' />
+            )}
             {session?.user ? (
               <span
                 className={cn(
-                  'line-clamp-1 text-[10px] font-semibold tracking-tighter text-zinc-500 transition-all duration-300',
+                  'text-muted-foreground line-clamp-1 font-semibold tracking-tighter transition-all duration-300',
                 )}
               >
-                {session?.user?.email}
+                {session?.user?.firstName} {session?.user?.lastName}
               </span>
             ) : (
-              <Skeleton className='h-3 w-32' />
+              <Skeleton className='h-3 w-28' />
             )}
           </Button>
         </SheetContent>
