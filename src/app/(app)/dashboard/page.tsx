@@ -4,7 +4,7 @@ const DashboardPage = async () => {
   await getSession();
 
   return (
-    <div>
+    <div className='p-5'>
       <h1>DashboardPage</h1>
     </div>
   );
