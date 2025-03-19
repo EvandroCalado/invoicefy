@@ -7,5 +7,13 @@ export const getSession = async () => {
 
   if (!session?.user) redirect('/login');
 
+  if (
+    !session.user.firstName ||
+    !session.user.lastName ||
+    !session.user.address
+  ) {
+    redirect('/onboarding');
+  }
+
   return session;
 };

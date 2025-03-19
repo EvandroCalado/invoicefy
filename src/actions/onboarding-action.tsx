@@ -4,15 +4,15 @@ import { redirect } from 'next/navigation';
 
 import { parseWithZod } from '@conform-to/zod';
 
+import { auth } from '@/lib/auth';
 import { prisma } from '@/lib/db';
-import { getSession } from '@/lib/get-session';
 import { onboardingSchema } from '@/schemas/onboarding-schema';
 
 export const onboardingAction = async (
   prevState: unknown,
   formData: FormData,
 ) => {
-  const session = await getSession();
+  const session = await auth();
 
   const submission = parseWithZod(formData, {
     schema: onboardingSchema,
@@ -24,7 +24,7 @@ export const onboardingAction = async (
 
   const user = await prisma.user.update({
     where: {
-      id: session.user?.id,
+      id: session?.user?.id,
     },
     data: {
       firstName: submission.value.firstName,
