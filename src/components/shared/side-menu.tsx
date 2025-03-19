@@ -95,7 +95,7 @@ export const SideMenu = () => {
                 className='bg-muted-foreground/20 justify-start'
                 onClick={() => signOut()}
               >
-                <LogOut />{' '}
+                <LogOut />
                 <span
                   className={cn({
                     hidden: !isOpenMenu,
