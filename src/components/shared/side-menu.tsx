@@ -9,7 +9,7 @@ import { signOut, useSession } from 'next-auth/react';
 
 import { links } from '@/lib/links';
 import { cn } from '@/lib/utils';
-import { Avatar, AvatarImage } from '../ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Button } from '../ui/button';
 import { Separator } from '../ui/separator';
 import { Skeleton } from '../ui/skeleton';
@@ -29,7 +29,7 @@ export const SideMenu = () => {
   return (
     <div
       className={cn(
-        'bg-foreground text-muted relative hidden h-full w-[220px] flex-col px-5 py-10 transition-all duration-300 md:flex',
+        'bg-foreground text-muted relative hidden h-full w-[280px] flex-col px-5 py-10 transition-all duration-300 md:flex',
         {
           'w-[80px]': !isOpenMenu,
         },
@@ -122,16 +122,19 @@ export const SideMenu = () => {
         <Tooltip>
           <TooltipTrigger asChild>
             <Button className='justify-start bg-transparent p-0 transition-all duration-300 hover:bg-transparent'>
-              <Avatar>
-                {session?.user ? (
+              {session?.user ? (
+                <Avatar>
                   <AvatarImage
-                    src={session?.user?.image ?? '/avatar.png'}
+                    src={session?.user?.image ?? undefined}
                     className='m-0'
                   />
-                ) : (
-                  <Skeleton className='size-8 rounded-full' />
-                )}
-              </Avatar>
+                  <AvatarFallback className='bg-primary text-xl uppercase'>
+                    {session?.user?.email?.charAt(0)}
+                  </AvatarFallback>
+                </Avatar>
+              ) : (
+                <Skeleton className='size-8 rounded-full' />
+              )}
               {session?.user ? (
                 <span
                   className={cn(
