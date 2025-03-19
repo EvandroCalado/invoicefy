@@ -1,6 +1,5 @@
 import { redirect } from 'next/navigation';
 
-import { auth, signIn } from '@/app/auth';
 import { Logo } from '@/components/shared/logo';
 import { SubmitButton } from '@/components/shared/submit-button';
 import {
@@ -12,6 +11,7 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { auth, signIn } from '@/lib/auth';
 
 const LoginPage = async () => {
   const session = await auth();

@@ -2,7 +2,6 @@ import { redirect } from 'next/navigation';
 
 import { AlertCircle, Mail } from 'lucide-react';
 
-import { auth } from '@/app/auth';
 import { Logo } from '@/components/shared/logo';
 import {
   Card,
@@ -11,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { auth } from '@/lib/auth';
 
 const VerifyPage = async () => {
   const session = await auth();
