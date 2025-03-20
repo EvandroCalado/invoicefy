@@ -13,7 +13,7 @@ const InvoicesPage = () => {
           Faturas Recentes
         </h1>
         <Button asChild>
-          <Link href='/invoices/new'>
+          <Link href='/invoices/create'>
             <Plus />
             Adicionar fatura
           </Link>
