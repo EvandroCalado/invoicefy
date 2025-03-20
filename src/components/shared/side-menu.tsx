@@ -61,7 +61,7 @@ export const SideMenu = () => {
                   <Button
                     asChild
                     className={cn('bg-foreground w-full justify-start', {
-                      'bg-primary': pathname === link.href,
+                      'bg-primary': pathname.startsWith(link.href),
                     })}
                   >
                     <Link href={link.href}>
